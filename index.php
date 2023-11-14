@@ -1,27 +1,3 @@
-<?php
-session_start();
-
-// LOGIN überprüft, ob der Benutzer angemeldet ist
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit;
-}
-include "config.php";
-$rawData = mysqli_query($con, "select * from einkaufsliste");
-
-// CSV-Datei zum herunterladen erstellen
-$csvFileName = 'einkaufsliste.csv';
-$csvFile = fopen($csvFileName, 'w');
-
-fputcsv($csvFile, ['ID', 'Liste']);
-
-while ($row = mysqli_fetch_array($rawData)) {
-    fputcsv($csvFile, [$row['id'], $row['list']]);
-}
-
-fclose($csvFile);
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
