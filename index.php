@@ -21,8 +21,7 @@ while ($row = mysqli_fetch_array($rawData)) {
 
 fclose($csvFile);
 ?>
-
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
